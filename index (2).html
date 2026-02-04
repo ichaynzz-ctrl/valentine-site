@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Will You Be Mine? 💖</title>
+    <title>Devuzze ❤️ Valentine Surprise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            text-align: center;
+            margin: 0;
+            padding: 20px;
             font-family: Arial, sans-serif;
             background: linear-gradient(to right, #ff758c, #ff7eb3);
             color: white;
-            margin-top: 100px;
+            text-align: center;
             overflow: hidden;
         }
 
         h1 {
-            font-size: 40px;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .signature {
+            margin-top: 20px;
+            font-style: italic;
         }
 
         button {
@@ -33,6 +48,34 @@
             background-color: #ff4d4d;
             position: absolute;
         }
+
+        /* Floating hearts */
+        .heart {
+            position: fixed;
+            color: pink;
+            font-size: 20px;
+            animation: float 4s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-800px); opacity: 0; }
+        }
+
+        /* I LOVE YOU pop */
+        .love-pop {
+            position: fixed;
+            color: red;
+            font-size: 25px;
+            animation: pop 1s ease forwards;
+            pointer-events: none;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -42,52 +85,80 @@
     <button id="yes" onclick="yesClick()">Yes 💖</button>
     <button id="no" onmouseover="moveButton()">No 😏</button>
 
+    <div id="letter" style="display:none;">
+        <p>
+        Devuzze… ❤️<br><br>
+        If you’re reading this, it means you scanned something made only for you 🤭<br>
+        I don’t know when it started…<br>
+        Maybe from that first call,<br>
+        maybe from your silly 😝 face,<br>
+        or maybe from the way you say “dahhh” before cutting the call…<br><br>
+        But somewhere between all those little moments,<br>
+        you became special to me.<br>
+        Not loudly.<br>
+        Not suddenly.<br>
+        Just peacefully… like stars appearing one by one 🌠<br><br>
+        You irritate me, tease me, make me smile for no reason…<br>
+        and I think that’s my favorite part.<br><br>
+        I don’t know what the future holds.<br>
+        But right now, I just want you to know —<br>
+        You make my days softer.<br>
+        You make my heart calmer.<br>
+        And you mean more to me than I say out loud.<br><br>
+        Happy Valentine’s Day, Devu ❤️
+        </p>
+
+        <div class="signature">– From someone who smiles because of you 🙈</div>
+    </div>
+
+    <!-- Background music -->
     <audio id="bgMusic" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
     </audio>
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
-        const noButton = document.getElementById("no");
-        const music = document.getElementById("bgMusic");
-
-        function moveButton() {
-            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
-            noButton.style.left = x + "px";
-            noButton.style.top = y + "px";
-        }
-
+        // Yes click
         function yesClick() {
-            music.play();
-
-            document.body.innerHTML = `
-                <h1>Yayyyy 💕 I knew ittt 🥹💖</h1>
-                <canvas id="confetti"></canvas>
-            `;
-
-            confetti({
-                particleCount: 200,
-                spread: 120
-            });
+            document.getElementById("bgMusic").play();
+            document.getElementById("letter").style.display = "block";
+            document.getElementById("yes").style.display = "none";
+            document.getElementById("no").style.display = "none";
         }
+
+        // No button moves and shows I LOVE YOU pop
+        function moveButton() {
+            var button = document.getElementById("no");
+            var x = Math.random() * (window.innerWidth - 100);
+            var y = Math.random() * (window.innerHeight - 50);
+            button.style.left = x + "px";
+            button.style.top = y + "px";
+
+            var love = document.createElement("div");
+            love.className = "love-pop";
+            love.innerHTML = "I ❤️ YOU";
+            love.style.left = x + "px";
+            love.style.top = y + "px";
+            document.body.appendChild(love);
+
+            setTimeout(function() {
+                love.remove();
+            }, 1000);
+        }
+
+        // Floating hearts continuously
+        setInterval(function() {
+            var heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.bottom = "0px";
+            document.body.appendChild(heart);
+
+            setTimeout(function() {
+                heart.remove();
+            }, 4000);
+        }, 500);
     </script>
+
 </body>
 </html>
-.heart {
-    position: absolute;
-    color: pink;
-    font-size: 20px;
-    animation: float 4s linear infinite;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-800px);
-        opacity: 0;
-    }
-}
