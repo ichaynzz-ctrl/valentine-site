@@ -74,3 +74,20 @@
     </script>
 </body>
 </html>
+.heart {
+    position: absolute;
+    color: pink;
+    font-size: 20px;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-800px);
+        opacity: 0;
+    }
+}
