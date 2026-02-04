@@ -1,5 +1,3 @@
-# valentine-site
-A special surprise 
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +8,16 @@ A special surprise
             font-family: Arial, sans-serif;
             background: linear-gradient(to right, #ff758c, #ff7eb3);
             color: white;
-            margin-top: 100px;
+            margin: 0;
+            padding-top: 50px;
             overflow: hidden;
         }
-
-        h1 {
+   h1 {
             font-size: 40px;
+            margin-bottom: 50px;
         }
 
-        button {
+ button {
             padding: 15px 25px;
             font-size: 18px;
             margin: 10px;
@@ -27,66 +26,62 @@ A special surprise
             cursor: pointer;
         }
 
-        #yes {
+#yes {
             background-color: #00ff88;
         }
 
-        #no {
+ #no {
             background-color: #ff4d4d;
             position: absolute;
+        }
+
+ /* Floating hearts */
+        .heart {
+            position: fixed;
+            color: pink;
+            font-size: 20px;
+            animation: float 4s linear infinite;
+            pointer-events: none;
+        }
+
+ @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-800px); opacity: 0; }
+        }
+
+/* I LOVE YOU pop */
+        .love-pop {
+            position: fixed;
+            color: red;
+            font-size: 25px;
+            animation: pop 1s ease forwards;
+            pointer-events: none;
+        }
+
+  @keyframes pop {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <h1>Will you be my Valentine? 💘</h1>
+  <h1>Will you be my Valentine? 💘</h1>
 
-    <button id="yes" onclick="yesClick()">Yes 💖</button>
+ <button id="yes" onclick="yesClick()">Yes 💖</button>
     <button id="no" onmouseover="moveButton()">No 😏</button>
-
+    <!-- Background music (optional) --->
     <audio id="bgMusic" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
     </audio>
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script>
-        const noButton = document.getElementById("no");
-        const music = document.getElementById("bgMusic");
-
-        function moveButton() {
-            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
-            noButton.style.left = x + "px";
-            noButton.style.top = y + "px";
-        }
-
+ <script>
+     // Yes button click 
         function yesClick() {
-            music.play();
-
-            document.body.innerHTML = `
-                <h1>Yayyyy 💕 I knew ittt 🥹💖</h1>
-                <canvas id="confetti"></canvas>
-            `;
-
-            confetti({
-                particleCount: 200,
-                spread: 120
-            });
-        }
-    </script
-</head>
-<body>
-    <h1>Will you be my Valentine? 💘</h1>
-    <button id="yes" onclick="yesClick()">Yes 💖</button>
-    <button id="no" onmouseover="moveButton()">No 😏</button>
-
-    <script>
-        // Yes click
-        function yesClick() {
+            document.getElementById("bgMusic").play();
             document.body.innerHTML = "<h1>Yayyyy 💕 I knew ittt 🥹💖</h1>";
         }
-
-        // Move No button
+     / No button moves and shows I LOVE YOU pop
         function moveButton() {
             var button = document.getElementById("no");
             var x = Math.random() * (window.innerWidth - 100);
@@ -94,7 +89,7 @@ A special surprise
             button.style.left = x + "px";
             button.style.top = y + "px";
 
-            // Create I LOVE YOU pop
+            / Create I LOVE YOU pop
             var love = document.createElement("div");
             love.className = "love-pop";
             love.innerHTML = "I ❤️ YOU";
@@ -107,7 +102,7 @@ A special surprise
             }, 1000);
         }
 
-        // Floating hearts continuously
+        / Floating hearts continuously
         setInterval(function() {
             var heart = document.createElement("div");
             heart.className = "heart";
@@ -121,5 +116,7 @@ A special surprise
             }, 4000);
         }, 500);
     </script>
+
 </body>
 </html>
+            
