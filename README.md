@@ -73,71 +73,7 @@ A special surprise
                 spread: 120
             });
         }
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Will You Be Mine? 💖</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #ff758c, #ff7eb3);
-            color: white;
-            margin-top: 50px;
-            overflow: hidden;
-        }
-
-        h1 {
-            font-size: 40px;
-        }
-
-        button {
-            padding: 15px 25px;
-            font-size: 18px;
-            margin: 10px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-
-        #yes {
-            background-color: #00ff88;
-        }
-
-        #no {
-            background-color: #ff4d4d;
-            position: absolute;
-        }
-
-        .heart {
-            position: fixed;
-            color: pink;
-            font-size: 20px;
-            animation: float 4s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-800px); opacity: 0; }
-        }
-
-        .love-pop {
-            position: fixed;
-            color: red;
-            font-size: 25px;
-            animation: pop 1s ease forwards;
-            pointer-events: none;
-        }
-
-        @keyframes pop {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(2); opacity: 0; }
-        }
-    </style>
+    </script
 </head>
 <body>
     <h1>Will you be my Valentine? 💘</h1>
