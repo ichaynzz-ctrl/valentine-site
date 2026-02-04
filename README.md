@@ -1,2 +1,78 @@
 # valentine-site
 A special surprise 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Will You Be Mine? 💖</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            margin-top: 100px;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        #yes {
+            background-color: #00ff88;
+        }
+
+        #no {
+            background-color: #ff4d4d;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Will you be my Valentine? 💘</h1>
+
+    <button id="yes" onclick="yesClick()">Yes 💖</button>
+    <button id="no" onmouseover="moveButton()">No 😏</button>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        const noButton = document.getElementById("no");
+        const music = document.getElementById("bgMusic");
+
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.left = x + "px";
+            noButton.style.top = y + "px";
+        }
+
+        function yesClick() {
+            music.play();
+
+            document.body.innerHTML = `
+                <h1>Yayyyy 💕 I knew ittt 🥹💖</h1>
+                <canvas id="confetti"></canvas>
+            `;
+
+            confetti({
+                particleCount: 200,
+                spread: 120
+            });
+        }
+    </script>
+</body>
+</html>
